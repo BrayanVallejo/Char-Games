@@ -1,0 +1,249 @@
+#ifndef _PIXELGAMES_H
+#define _PIXELGAMES_H
+
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <conio.h>
+
+/*funcion para imprimir un mensaje por pantalla tipo void*/
+void Juego_Imprime(const char * texto){
+	printf("%s",texto);
+}
+/*funcion para mostrar un numero*/
+void Juego_Imprime_Numero(int numero){
+	printf("%i",numero);
+}
+/*funcion para centrar el texto*/
+void Juego_Centra_Texto(const char * texto , int espacios){
+	if(espacios == 25){
+		printf("                         %s",texto);
+	}
+	else if (espacios == 20){
+		printf("                      %s",texto);
+	}
+	if(espacios == 15){
+		printf("                   %s",texto);
+	}
+	else if (espacios == 10){
+		printf("                %s",texto);
+	}
+}
+
+/*funcion para limpiar la pantalla*/
+void Juego_Limpia_Pantalla (){
+	system("clear");
+}
+/*funcion para espera*/
+void Juego_espera (int tiempo){
+	usleep(tiempo); 
+}
+/*funcion para eliminar un archivo*/
+int Juego_Elimina_Archivo (const char * url){
+    
+    if(remove(url) == -1){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+    
+}
+/*funcion pra crear un archivo*/
+int Juego_Crea_Archivo (const char * nombre , const char * lectura , const char * texto){
+    
+    FILE * archivo;
+    
+    archivo = fopen(nombre,lectura);
+    
+    if(archivo == NULL){
+        return -1;
+    }
+    
+    fprintf(archivo,"%s",texto);
+    
+}
+/*funcion para comparar los strings*/
+int Juego_compara_Str (const char * str1 , const char * str2){
+    
+    if(strcmp(str1,str2) == 0){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+    
+}
+/*para leer una tecla*/
+int Juego_lee_tecla (){
+    return getch();
+}
+/*funcion para crear lineas*/
+void Juego_Crea_Lineas(int op){
+	if(op == 0){
+		printf("\n");
+	}
+	else if (op == 1){
+		printf("\n\n");
+	}
+	if(op == 2){
+		printf("\n\n\n");
+	}
+	else if (op == 3){
+		printf("\n\n\n\n");
+	}
+	if(op == 4){
+		printf("\n\n\n\n\n");
+	}
+}
+/*funcion pase*/
+void Juego_Parse_Char(const char * op){
+	printf("%d",op);
+}
+/*funcion parse dos*/
+void Juego_Parse_Int(int op){
+	printf("%c",op);
+}
+/*Funcion para duplicar texto*/
+void Juego_Duplica_Texto (const char * text , int cantidad , int tipo){
+    int fin = 0;
+  
+    if(tipo == 0){
+        while(1){
+            fin++;
+            printf("%s",text);
+            if(fin == cantidad){
+                break;
+            }
+        }
+    }
+    else if(tipo == 1){
+        while(1){
+            fin++;
+            printf("%s ",text);
+            if(fin == cantidad){
+                break;
+            }
+        }
+    }
+    if(tipo == 2){
+        while(1){
+            fin++;
+            printf("%s\n",text);
+            if(fin == cantidad){
+                break;
+            }
+        }
+    }
+}
+/*funcion para leer un entero*/
+int Juego_Lee_Numero (int leer){
+    
+    fflush(stdin);
+    scanf("%i",&leer);
+    fflush(stdin);
+    
+    return leer;
+}
+/*funcion para leer un float*/
+int Juego_Lee_Float (float leer){
+    
+    fflush(stdin);
+    scanf("%f",&leer);
+    fflush(stdin);
+    
+    return leer;
+    
+}
+/*funcion para leer una letra*/
+int Juego_Lee_Letra(const char * leer){
+    
+    fflush(stdin);
+    scanf("%s",&leer);
+    fflush(stdin);
+    
+    return Juego_Lee_Letra(leer);
+    
+}
+/*funcio para mostrar un float*/
+void Juego_Imprime_float (float Float){
+    printf("%f",Float);
+}
+/*funcion para aunmentar un numero*/
+int Juego_Aumenta_Uno (int numero){
+    
+    numero++;
+    return numero;
+    
+}
+/*funcion para restar un numero*/
+int Juego_Resta_Uno (int numero){
+    
+    numero--;
+    return numero;
+    
+}
+/*funcion para salir*/
+void Juego_Sale (){
+    
+    exit(1);
+    
+}
+/*funcion para generar un numero aleatorio*/
+int Juego_Genera_Numero_Aleatorio (int inicio , int fin){
+    
+    srand(time(NULL));
+    inicio = rand()%fin;
+    
+    return inicio;
+    
+    
+}
+/*funcion para sumar dos numeros*/
+int Juego_Suma (int num1 , int num2){
+    num1 = num1 + num2;
+    return num1;
+}
+/*funcion para restar dos numeros*/
+int Juego_Resta (int num1 , int num2){
+    num1 = num1 - num2;
+    return num1;
+}
+/*funcion para multiplicar dos numeros*/
+int Juego_Multiplica (int num1 , int num2){
+    num1 = num1 * num2;
+    return num1;
+}
+/*funcion para dividir dos numeros*/
+int Juego_Divide (int num1 , int num2){
+    num1 = num1 / num2;
+    return num1;
+}
+/*funcion para el residuo dos numeros*/
+int Juego_Residuo_de(int num1 , int num2){
+    num1 = num1%num2;
+    return num1;
+}
+/*funcion para sacar la raiz cuadrada de un numero*/
+int Juego_RaizCuadrada_De (int num1){
+    
+    return sqrt(num1);
+    
+}
+/*funcion para comparar dos numeros*/
+int Juego_Compara_Numeros (int num1 , int num2){
+    
+    if(num1 == num2){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+    
+}
+
+
+#endif  
